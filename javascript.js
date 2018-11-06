@@ -1,8 +1,8 @@
-var registerBtn = document.querySelector("#register");
-var loginBtn = document.querySelector("#login");
-var registerForm = document.querySelector(".register");
+var registerBtn = document.querySelector("#nav-register");
+var loginBtn = document.querySelector("#nav-login");
+var registerForm = document.querySelector(".register-form");
 var mainContent = document.getElementById("main-content");
-var loginDiv = document.querySelector(".login");
+var loginDiv = document.querySelector(".login-form-div");
 var register = document.querySelector(".register-btn");
 var login = document.querySelector(".login-btn");
 var profile = document.querySelector("#profile");
@@ -14,18 +14,20 @@ var PAGE_DATA = {};
 
 function showRegister() {
     mainContent.style.display = "none";
+    mainContent.classList.remove("d-flex");
     registerForm.style.display = "block";
-    loginBtn.disabled = true;
+    loginDiv.style.display = "none";
 }
 function showLogin() {
     mainContent.style.display = "none";
+    mainContent.classList.remove("d-flex");
     loginDiv.style.display = "block";
-    registerBtn.disabled = true;
+    registerForm.style.display = "none";
 }
 function showProfileAfterRegister(event) {
     var userName = document.querySelector("#username");
     var passWord = document.querySelector("#password");
-    var passwordRepeat = document.querySelector("#password_repeat");
+
     mainContent.style.display = "none";
     registerForm.style.display = "none";
     loginDiv.style.display = "none";
@@ -36,6 +38,12 @@ function showProfileAfterRegister(event) {
 
     welcome.innerHTML = userName.value;
 
+    fetchRegisterData();
+}
+
+function fetchRegisterData() {
+    var passwordRepeat = document.querySelector("#password_repeat");
+
     fetch("https://bcca-pingpong.herokuapp.com/api/register/", {
         method: "POST",
         headers: {
@@ -44,7 +52,7 @@ function showProfileAfterRegister(event) {
         body: JSON.stringify({
             username: userName.value,
             password: passWord.value,
-            passwordRepeat: passwordRepeat.value
+            password_repeat: passwordRepeat.value
         })
     })
         .then(r => r.json())
@@ -67,6 +75,60 @@ function showProfileAfterLogin(event) {
 
     welcome.innerHTML = LoginInput.value;
 
+    fetchLoginInfo();
+}
+
+function addScore() {
+    const score1 = document.getElementById("score-1");
+    const score2 = document.getElementById("score-2");
+    var restartPopup = document.querySelector(".reset-game");
+
+    var count = 0;
+    var score = 0;
+
+    score1.addEventListener("click", function() {
+        count += 1;
+        score1.innerText = count;
+        if (score1.innerText === "10") {
+            score1.disabled = true;
+            score2.disabled = true;
+            restartPopup.style.display = "block";
+            resetGame(score1, score2);
+            count = 0;
+        }
+    });
+
+    score2.addEventListener("click", () => {
+        score += 1;
+        score2.innerText = score;
+        if (score2.innerText === "10") {
+            score2.disabled = true;
+            score1.disabled = true;
+            restartPopup.style.display = "block";
+            resetGame(score1, score2);
+            score = 0;
+        }
+    });
+}
+
+function resetGame(score1, score2) {
+    var restartBtn = document.getElementById("restart-btn");
+    var restartPopup = document.querySelector(".reset-game");
+    var homeScore1 = document.getElementById("home-score1");
+    var homeScore2 = document.getElementById("home-score2");
+
+    restartBtn.addEventListener("click", () => {
+        homeScore1.innerText = score1.innerText;
+        homeScore2.innerText = score2.innerText;
+        score1.innerText = "0";
+        score2.innerText = "0";
+        restartPopup.style.display = "none";
+        score1.disabled = false;
+        score2.disabled = false;
+    });
+}
+
+function fetchLoginInfo() {
     fetch("https://bcca-pingpong.herokuapp.com/api/login/", {
         method: "POST",
         headers: {
@@ -83,46 +145,6 @@ function showProfileAfterLogin(event) {
             console.log(PAGE_DATA);
         });
 }
-
-function addScore() {
-    const score1 = document.getElementById("score-1");
-    const score2 = document.getElementById("score-2");
-    var count = 0;
-    var score = 0;
-
-    score1.addEventListener("click", function() {
-        count += 1;
-        score1.innerText = count;
-        if (score1.innerText === "10") {
-            score1.disabled = true;
-            score2.disabled = true;
-        }
-    });
-
-    score2.addEventListener("click", () => {
-        score += 1;
-        score2.innerText = score;
-        if (score2.innerText === "10") {
-            score2.disabled = true;
-            score1.disabled = true;
-        }
-    });
-}
-function getInfo() {
-    fetch('https://bcca-pingpong.herokuapp.com/api/login/',
-    )
-}
-// fetch("https://bcca-pingpong.herokuapp.com/api/login/", {
-//     method: "post",
-//     headers: {
-//         "Content-Type": "application/json;charset=utf-8"
-//     },
-//     body: JSON.stringify({ username: "Timothy", password: "password" })
-// })
-//     .then(r => r.json())
-//     .then(obj => {
-//         console.log(obj);
-//     });
 
 registerForm.addEventListener("submit", showProfileAfterRegister);
 loginDiv.addEventListener("submit", showProfileAfterLogin);

@@ -15,12 +15,18 @@
     <nav class="navbar text-white bg-dark">
         <a class="navbar-brand" href="index.html">Home</a>
         <div>
-            <button class="text-white" id="register">Register</button> \
-            <button class="text-white" id="login">Login</button>
+            <button class="text-white" id="nav-register">Register</button>
+            <button class="text-white" id="nav-login">Login</button>
         </div>
     </nav>
 
-    <div id="main-content">
+
+    <div id="main-content" class="container mt-5 ">
+        <div class="content">
+            <h1 id="home-score1" class="border-right" style="height: 28rem; width:30rem"></h1>
+            <h1 id="home-score2" style="height: 28rem; width:30rem"></h1>
+            <img src="./pictures/referee.jpg" alt="" style="width:30rem; height:34rem">
+        </div>
     </div>
 
     <div id="profile" class="container">
@@ -35,30 +41,37 @@
                 <h2>Player2</h2>
             </div>
         </div>
+        <button class="btn-primary rounded mt-3">Subtract Score</button>
+        <button id="minus-score-btn" class="btn-primary rounded mt-3">Subtract Score</button>
     </div>
 
-    <div class="form-div register">
+    <div class="reset-game">
+        <h1>Game Over</h1>
+        <button class="btn-primary rounded" id="restart-btn">New Game</button>
+    </div>
+
+    <div class="form-div register-form">
         <form class="pb-5">
             <fieldset>
                 <div class="col-md-6 pt-5">
                     <div class="form-group">
                         <label for="username">username:</label>
-                        <input type="text" id="username" class="form-control" required="required">
+                        <input type="text" id="username" class="form-control" required="required" value="ray">
                     </div>
                     <div class="form-group">
                         <label for="password">password:</label>
-                        <input type="text" id="password" class="form-control" required="required">
+                        <input type="text" id="password" class="form-control" required="required" value="password">
                     </div>
                     <div class="form-group">
                         <label for="password_repeat">password_repeat:</label>
-                        <input type="text" id="password_repeat" class="form-control" required="required">
+                        <input type="text" id="password_repeat" class="form-control" required="required" value="password">
                     </div>
                     <button type="submit" class="register-btn btn-primary">Register</button>
                 </div>
             </fieldset>
         </form>
     </div>
-    <div class="form-div login">
+    <div class="form-div login-form-div">
         <form class="pb-5">
             <fieldset>
                 <div class="col-md-6 pt-5">

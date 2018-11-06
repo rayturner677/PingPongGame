@@ -7,6 +7,19 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+#main-content img {
+    margin: 0;
+    padding: 6rem 0 0 0rem;
+}
+
+#main-content h1 {
+    border: 6px solid black;
+    margin: 6rem 0 0 0;
+    font-size: 4rem;
+}
+.content {
+    display: flex;
+}
 
 img {
     margin-left: 30rem;
@@ -57,7 +70,7 @@ img {
 #player2 {
     padding-top: 2rem;
 }
-#profile button {
+#profile .btn-lg {
     font-size: 10rem;
     background-color: silver;
     width: 20rem;
@@ -69,4 +82,28 @@ img {
 }
 form button {
     border-radius: 20px;
+}
+.reset-game {
+    display: none;
+    width: 500px;
+    overflow: hidden;
+    background: #f1f1f1;
+    box-shadow: 0 0 20px black;
+    border-radius: 8px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    padding: 10px;
+    text-align: center;
+}
+.register-form {
+    display: none;
+}
+.login-form-div {
+    display: none;
+}
+#minus-score-btn {
+    margin-left: 34rem;
 }
