@@ -10,6 +10,7 @@ var userName = document.querySelector("#username");
 var passWord = document.querySelector("#password");
 var passwordRepeat = document.querySelector("#password_repeat");
 var LoginInput = document.getElementById("username-login");
+var invalid = document.getElementById("invalid-text");
 var PAGE_DATA = {};
 
 function showRegister() {
@@ -25,19 +26,7 @@ function showLogin() {
     registerForm.style.display = "none";
 }
 function showProfileAfterRegister(event) {
-    var userName = document.querySelector("#username");
-    var passWord = document.querySelector("#password");
-
-    mainContent.style.display = "none";
-    registerForm.style.display = "none";
-    loginDiv.style.display = "none";
-    profile.style.display = "block";
     event.preventDefault();
-    console.log(profile);
-    var welcome = document.getElementById("welcome-user");
-
-    welcome.innerHTML = userName.value;
-
     fetchRegisterData();
 }
 
@@ -57,24 +46,28 @@ function fetchRegisterData() {
     })
         .then(r => r.json())
         .then(obj => {
-            console.log(obj);
+            if (obj.token) {
+                var userName = document.querySelector("#username");
+                var passWord = document.querySelector("#password");
+
+                mainContent.style.display = "none";
+                registerForm.style.display = "none";
+                loginDiv.style.display = "none";
+                profile.style.display = "block";
+                console.log(profile);
+                var welcome = document.getElementById("welcome-user");
+
+                welcome.innerHTML = userName.value;
+
+                console.log(obj);
+            } else {
+                invalid.style.display = "block";
+            }
         });
 }
 
 function showProfileAfterLogin(event) {
-    mainContent.style.display = "none";
-    registerForm.style.display = "none";
-    loginDiv.style.display = "none";
-    profile.style.display = "block";
     event.preventDefault();
-    console.log({
-        username: userName.value,
-        password: passWord.value
-    });
-    var welcome = document.getElementById("welcome-user");
-
-    welcome.innerHTML = LoginInput.value;
-
     fetchLoginInfo();
 }
 
@@ -142,7 +135,21 @@ function fetchLoginInfo() {
         .then(r => r.json())
         .then(obj => {
             PAGE_DATA.token = obj.token;
-            console.log(PAGE_DATA);
+            if (PAGE_DATA.token) {
+                mainContent.style.display = "none";
+                registerForm.style.display = "none";
+                loginDiv.style.display = "none";
+                profile.style.display = "block";
+                register.disabled = true;
+                login.disabled = true;
+                console.log({
+                    username: userName.value,
+                    password: passWord.value
+                });
+                var welcome = document.getElementById("welcome-user");
+
+                welcome.innerHTML = LoginInput.value;
+            }
         });
 }
 

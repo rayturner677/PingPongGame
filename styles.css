@@ -21,9 +21,8 @@ body {
     display: flex;
 }
 
-img {
-    margin-left: 30rem;
-    margin-top: 10rem;
+#home-score2 {
+    margin: 0 12rem 0 0;
 }
 
 .form-div {
@@ -106,4 +105,8 @@ form button {
 }
 #minus-score-btn {
     margin-left: 34rem;
+}
+#invalid-text {
+    display: none;
+    color: red;
 }
