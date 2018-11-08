@@ -110,3 +110,6 @@ form button {
     display: none;
     color: red;
 }
+.selects {
+    display: flex;
+}
