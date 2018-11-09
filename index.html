@@ -33,6 +33,21 @@
                 <h1 id="home-score2" style="height: 28rem; width:30rem"></h1>
             </div>
         </div>
+        <div class="new-game">
+            <div class="d-flex">
+                <h2>Player1:</h2>
+                <select id="select-1">
+                    <option></option>
+                </select>
+            </div>
+            <div class="d-flex">
+                <h2>Player2:</h2>
+                <select id="select-2">
+                    <option></option>
+                </select>
+            </div>
+            <button class="start-game btn-primary">New Game</button>
+        </div>
 
         <div id="profile" class="container">
             <h1>Welcome <span id="welcome-user"></span></h1>
@@ -40,19 +55,13 @@
                 <div id="player1">
                     <button id="score-1" class="btn btn-lg"></button>
                     <div class="selects">
-                        <h2>Player1</h2>
-                        <select id="select-1">
-                            <option></option>
-                        </select>
+                        <div><h2>Player1</h2></div>
                     </div>
                 </div>
                 <div id="player2">
                     <button id="score-2" class="btn btn-lg"></button>
-                    <h2>Player2</h2>
                     <div class="selects">
-                        <select id="select-2">
-                            <option></option>
-                        </select>
+                        <div><h2>Player2</h2></div>
                     </div>
                 </div>
             </div>
@@ -82,17 +91,15 @@
                                 id="username"
                                 class="form-control"
                                 required="required"
-                                value="ray"
                             />
                         </div>
                         <div class="form-group">
                             <label for="password">password:</label>
                             <input
-                                type="text"
+                                type="password"
                                 id="register-password"
                                 class="form-control"
                                 required="required"
-                                value="password"
                             />
                         </div>
                         <div class="form-group">
@@ -100,11 +107,10 @@
                                 >password_repeat:</label
                             >
                             <input
-                                type="text"
+                                type="password"
                                 id="password_repeat"
                                 class="form-control"
                                 required="required"
-                                value="password"
                             />
                         </div>
                         <button type="submit" class="register-btn btn-primary">
@@ -130,17 +136,15 @@
                                 id="username-login"
                                 class="form-control"
                                 required="required"
-                                value="ray"
                             />
                         </div>
                         <div class="form-group">
                             <label for="password">password:</label>
                             <input
-                                type="text"
+                                type="password"
                                 id="user-password"
                                 class="form-control"
                                 required="required"
-                                value="password"
                             />
                         </div>
                         <button

@@ -48,13 +48,10 @@ body {
 #table div {
     width: 30rem;
     border: 10px solid white;
-    margin-top: 0rem;
-    margin-right: 0rem;
 }
 #table {
     text-align: center;
-    width: 50rem;
-    height: 20rem;
+    width: 60rem;
     background-color: rgb(27, 27, 250);
 }
 #profile {
@@ -112,4 +109,9 @@ form button {
 }
 .selects {
     display: flex;
+}
+.new-game {
+    display: none;
+    width: 30rem;
+    margin: 20rem 0 0 30rem;
 }
