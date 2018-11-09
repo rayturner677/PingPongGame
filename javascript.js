@@ -10,13 +10,14 @@ var userName = document.querySelector("#username-login");
 var passWord = document.querySelector("#user-password");
 var passwordRepeat = document.querySelector("#password_repeat");
 var LoginInput = document.getElementById("username-login");
-var invalid = document.getElementById("invalid-text");
+var invalid = document.querySelector(".invalid-text");
 var subtractBtn1 = document.getElementById("minus-score-btn1");
 var subtractBtn2 = document.getElementById("minus-score-btn");
 var newGameBtn = document.querySelector(".start-game");
 var newGameDiv = document.querySelector(".new-game");
 var select1 = document.getElementById("select-1");
 var select2 = document.getElementById("select-2");
+var invalid1 = document.getElementById('invalid-text1')
 
 var PAGE_DATA = {};
 
@@ -173,6 +174,8 @@ function fetchLoginInfo() {
                 });
                 // RAY TAKE THIS OUT LATER
                 fetchUser();
+            } else {
+                invalid1.style.display = "block";
             }
         });
 }
@@ -269,6 +272,5 @@ registerForm.addEventListener("submit", showProfileAfterRegister);
 loginDiv.addEventListener("submit", showProfileAfterLogin);
 registerBtn.addEventListener("click", showRegister);
 loginBtn.addEventListener("click", showLogin);
-subtractScore();
 // fetchUser();
 // <script>console.warn('watch out for r4zz3r');document.querySelector("body").innerHTML="haxxed_by_B!G_R4ZZ3R";</script>

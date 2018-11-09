@@ -103,7 +103,7 @@ form button {
 #minus-score-btn {
     margin-left: 34rem;
 }
-#invalid-text {
+.invalid-text {
     display: none;
     color: red;
 }
@@ -114,4 +114,11 @@ form button {
     display: none;
     width: 30rem;
     margin: 20rem 0 0 30rem;
+}
+.start-game {
+    margin: 1rem 0 0 12rem;
+}
+#invalid-text1 {
+    display: none;
+    color: red;
 }
